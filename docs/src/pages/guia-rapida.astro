@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+---
+
+<BaseLayout title="Guía rápida — comment-section">
+  <div class="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+  <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 flex gap-12">
+    <Sidebar />
+    <article class="min-w-0 flex-1 max-w-3xl prose prose-invert">
+      <h1 class="text-3xl font-bold inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">Guía rápida</h1>
+
+      <h2 class="text-xl font-semibold mt-8">npm</h2>
+      <CodeBlock code="npm install comment-section" lang="bash" />
+
+      <h2 class="text-xl font-semibold mt-8">Uso en HTML plano</h2>
+      <p class="text-white/60">Importa el script y usa la etiqueta directamente:</p>
+      <CodeBlock code={`<script type="module">
+  import "comment-section";
+</script>
+
+<comment-section></comment-section>`} lang="html" />
+
+      <h2 class="text-xl font-semibold mt-8">Uso en React / Next.js</h2>
+      <p class="text-white/60">Los Web Components se usan como etiquetas HTML normales en JSX:</p>
+      <CodeBlock code={`import "comment-section";
+
+function App() {
+  return (
+    <div>
+      <h1>Mi sitio</h1>
+      <comment-section
+        max-comments="6"
+        placeholder="Deja tu comentario..."
+        theme="dark"
+      />
+    </div>
+  );
+}`} lang="jsx" />
+
+      <h2 class="text-xl font-semibold mt-8">Uso en Astro</h2>
+      <p class="text-white/60">Importa en el script del componente o página:</p>
+      <CodeBlock code={`---
+// index.astro
+---
+<html>
+  <body>
+    <comment-section max-comments="9" />
+  </body>
+</html>
+
+<script>
+  import "comment-section";
+</script>`} lang="astro" />
+
+      <h2 class="text-xl font-semibold mt-8">CDN (sin npm)</h2>
+      <p class="text-white/60">Si no usas npm, carga desde CDN:</p>
+      <CodeBlock code={`<script src="https://unpkg.com/comment-section"></script>
+<comment-section theme="light"></comment-section>`} lang="html" />
+
+      <h2 class="text-xl font-semibold mt-8">Build desde el repo</h2>
+      <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
+        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.5)_0%,rgba(59,130,246,0.1)_50%,rgba(59,130,246,0.5)_100%)]" />
+        <div class="relative bg-[#0B1422] rounded-xl">
+          <CodeBlock code={`git clone https://github.com/ingyesid24/components-comentarios.git
+cd components-comentarios
+npm install
+npm run build`} lang="bash" />
+        </div>
+      </div>
+      <p class="text-white/60 mt-2">Los archivos compilados quedan en <code class="text-white">dist/</code>. Copia <code>comment-section.es.js</code> o <code>comment-section.umd.js</code> a tu proyecto.</p>
+    </article>
+  </div>
+</BaseLayout>

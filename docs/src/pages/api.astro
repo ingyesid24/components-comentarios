@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+
+const props = [
+  { attr: "max-comments", prop: "maxcomments", type: "number", default: "6", desc: "Cantidad de comentarios visibles antes del botón 'Ver más'." },
+  { attr: "placeholder", prop: "placeholder", type: "string", default: `"Escribe un comentario..."`, desc: "Placeholder del textarea." },
+  { attr: "theme", prop: "theme", type: `"dark" | "light"`, default: `"dark"`, desc: "Tema del componente." },
+  { attr: "char-limit", prop: "charlimit", type: "number", default: "500", desc: "Máximo de caracteres por comentario." },
+  { attr: "—", prop: "initialComments", type: "Comment[]", default: "[]", desc: "Array de comentarios iniciales (solo vía JS, no como atributo HTML)." },
+];
+---
+
+<BaseLayout title="API / Props — comment-section">
+  <div class="fixed inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#3b82f6] opacity-[0.08] rounded-full blur-3xl animate-glow-pulse"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#8878e6] opacity-[0.06] rounded-full blur-3xl animate-glow-pulse" style="animation-delay: -3s; animation-direction: reverse;"></div>
+  </div>
+  <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 flex gap-12">
+    <Sidebar />
+    <article class="min-w-0 flex-1 max-w-3xl">
+      <h1 class="text-3xl font-bold mb-2 inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">API / Props</h1>
+      <p class="text-white/50 mb-8">Atributos HTML y propiedades JavaScript del componente.</p>
+
+      <h2 class="text-xl font-semibold mb-4">Atributos HTML</h2>
+      <div class="overflow-x-auto rounded-xl border border-[#111C2D]">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#111C2D] bg-[#0D1525]">
+              <th class="px-4 py-3 text-left font-medium text-white/60">Atributo</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Propiedad</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Tipo</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Default</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.map((p) => (
+              <tr class="border-b border-[#111C2D] last:border-0">
+                <td class="px-4 py-3 font-mono text-xs text-[#3b82f6]">{p.attr}</td>
+                <td class="px-4 py-3 font-mono text-xs text-white/80">{p.prop}</td>
+                <td class="px-4 py-3 font-mono text-xs text-white/50">{p.type}</td>
+                <td class="px-4 py-3 font-mono text-xs text-white/50">{p.default}</td>
+                <td class="px-4 py-3 text-white/70">{p.desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-semibold mt-10 mb-4">Propiedades JavaScript</h2>
+      <p class="text-white/60 mb-4">Además de los atributos HTML, puedes asignar propiedades directamente desde JavaScript:</p>
+
+      <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
+        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.3)_0%,transparent_50%,rgba(59,130,246,0.3)_100%)]" />
+        <div class="relative bg-[#0B1422] rounded-xl">
+          <CodeBlock code={`const el = document.querySelector("comment-section");
+
+el.maxcomments = 9;
+el.placeholder = "Tu opinión nos importa...";
+el.theme = "light";
+el.charlimit = 300;`} lang="js" />
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold mt-8 mb-2">initialComments</h3>
+      <p class="text-white/60 mb-4">Para inicializar con comentarios existentes (útil para SSR o hydration):</p>
+      <CodeBlock code={`el.initialComments = [
+  {
+    id: "1",
+    text: "¡Excelente componente!",
+    date: "2025-01-15T10:00:00Z",
+    name: "Usuario Ejemplo",
+    avatar: "https://i.pravatar.cc/80?u=1",
+    emoji: "👍"
+  }
+];`} lang="js" />
+
+      <h3 class="text-lg font-semibold mt-8 mb-2">Interfaz Comment</h3>
+      <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
+        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(136,120,230,0.3)_0%,transparent_50%,rgba(136,120,230,0.3)_100%)]" />
+        <div class="relative bg-[#0B1422] rounded-xl">
+          <CodeBlock code={`interface Comment {
+  id: string;
+  text: string;
+  date: string;
+  name: string;
+  avatar: string;
+  emoji: string;
+  liked?: boolean;
+}`} lang="ts" />
+        </div>
+      </div>
+
+      <h2 class="text-xl font-semibold mt-10 mb-4">Eventos</h2>
+      <p class="text-white/60 mb-4">El componente dispatchea eventos personalizados que puedes escuchar:</p>
+      <div class="relative overflow-x-auto rounded-xl border border-[#111C2D]">
+        <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
+          <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)]"></div>
+        </div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#111C2D] bg-[#0D1525]">
+              <th class="px-4 py-3 text-left font-medium text-white/60">Evento</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Detalle</th>
+              <th class="px-4 py-3 text-left font-medium text-white/60">Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[#111C2D]">
+              <td class="px-4 py-3 font-mono text-xs text-[#3b82f6]">comment-added</td>
+              <td class="px-4 py-3 font-mono text-xs text-white/50"><code>{"{ comment: Comment }"}</code></td>
+              <td class="px-4 py-3 text-white/70">Se dispara cuando se agrega un comentario.</td>
+            </tr>
+            <tr class="border-b border-[#111C2D]">
+              <td class="px-4 py-3 font-mono text-xs text-[#3b82f6]">comment-deleted</td>
+              <td class="px-4 py-3 font-mono text-xs text-white/50"><code>{"{ commentId: string }"}</code></td>
+              <td class="px-4 py-3 text-white/70">Se dispara cuando se elimina un comentario.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

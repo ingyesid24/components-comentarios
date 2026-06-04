@@ -244,6 +244,23 @@ export class CommentSection extends LitElement {
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
+    .input-spotlight {
+      position: relative;
+    }
+
+    .input-spotlight-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      border-radius: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .input-spotlight-overlay.visible {
+      opacity: 1;
+    }
+
     .light .emoji-picker-grid {
       background: #fff;
       border-color: #e5e7eb;
@@ -574,6 +591,8 @@ export class CommentSection extends LitElement {
   declare _lastSubmit: number;
   declare _deletingIds: Set<string>;
   declare _boundOnDocumentClick: (e: MouseEvent) => void;
+  declare _spotlightVisible: boolean;
+  declare _spotlightStyle: string;
 
   constructor() {
     super();
@@ -590,6 +609,8 @@ export class CommentSection extends LitElement {
     this._emojiPickerForComment = null;
     this._lastSubmit = 0;
     this._deletingIds = new Set();
+    this._spotlightVisible = false;
+    this._spotlightStyle = '';
     this._boundOnDocumentClick = this._onDocumentClick.bind(this);
   }
 
@@ -736,6 +757,22 @@ export class CommentSection extends LitElement {
     }
   }
 
+  _onInputSpotlightMove(e: MouseEvent) {
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    this._spotlightStyle = `background: radial-gradient(300px circle at ${x}px ${y}px, rgba(120,119,198,0.15), transparent 40%);`;
+    this._spotlightVisible = true;
+    this.requestUpdate();
+  }
+
+  _onInputSpotlightLeave() {
+    this._spotlightVisible = false;
+    this._spotlightStyle = '';
+    this.requestUpdate();
+  }
+
   _renderSkeleton() {
     return html`
       <div class="skeleton-grid">
@@ -848,14 +885,19 @@ export class CommentSection extends LitElement {
         <h2>Comentarios</h2>
 
         <div class="input-area">
-          <textarea
-            .value="${this._newComment}"
-            @input="${this._onInput}"
-            @keydown="${this._onKeyDown}"
-            placeholder="${this.placeholder}"
-            maxlength="${this.charlimit}"
-            aria-label="Escribe un comentario"
-          ></textarea>
+          <div class="input-spotlight"
+            @mousemove="${this._onInputSpotlightMove}"
+            @mouseleave="${this._onInputSpotlightLeave}">
+            <textarea
+              .value="${this._newComment}"
+              @input="${this._onInput}"
+              @keydown="${this._onKeyDown}"
+              placeholder="${this.placeholder}"
+              maxlength="${this.charlimit}"
+              aria-label="Escribe un comentario"
+            ></textarea>
+            <div class="input-spotlight-overlay${this._spotlightVisible ? ' visible' : ''}" style="${this._spotlightStyle}"></div>
+          </div>
           <div class="char-count${this._newComment.length > this.charlimit * 0.9
             ? ' over'
             : ''}">

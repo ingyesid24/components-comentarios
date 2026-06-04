@@ -1,0 +1,35 @@
+---
+// docs/src/components/DemoEmbed.astro
+export interface Props {
+  maxComments?: number;
+  placeholder?: string;
+  theme?: "dark" | "light";
+  initialComments?: string;
+}
+
+const { maxComments = 4, placeholder = "Prueba el componente...", theme = "dark" } = Astro.props;
+---
+
+<div class="relative my-8 rounded-2xl overflow-hidden border border-[#111C2D]">
+  <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
+    <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)]"></div>
+  </div>
+  <comment-section
+    max-comments={maxComments}
+    placeholder={placeholder}
+    theme={theme}
+    char-limit="300"
+  ></comment-section>
+</div>
+
+<script>
+  import "comment-section";
+
+  document.querySelectorAll("comment-section").forEach((el) => {
+    el.initialComments = [
+      { id: "demo-1", text: "¡Este componente funciona en cualquier framework!", name: "Ana García", date: new Date().toISOString(), emoji: "🎉", avatar: "https://i.pravatar.cc/80?u=demo1" },
+      { id: "demo-2", text: "Me encanta que se pueda usar directo en HTML sin React.", name: "Carlos López", date: new Date(Date.now() - 600000).toISOString(), emoji: "❤️", avatar: "https://i.pravatar.cc/80?u=demo2" },
+      { id: "demo-3", text: "Probando el tema oscuro y el selector de emojis 🔥", name: "María Rodríguez", date: new Date(Date.now() - 1200000).toISOString(), emoji: "🔥", avatar: "https://i.pravatar.cc/80?u=demo3" },
+    ];
+  });
+</script>
