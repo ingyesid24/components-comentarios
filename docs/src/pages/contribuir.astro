@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+---
+
+<BaseLayout title="Contribuir — comment-section">
+  <div class="fixed inset-0 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_70%)]"></div>
+  </div>
+  <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 flex gap-12">
+    <Sidebar />
+    <article class="min-w-0 flex-1 max-w-3xl prose prose-invert">
+      <h1 class="text-3xl font-bold inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">Contribuir</h1>
+      <p class="text-white/60">¿Encontraste un bug o tienes una idea? Este proyecto es open source y las contribuciones son bienvenidas.</p>
+
+      <h2 class="text-xl font-semibold mt-8">Repositorio</h2>
+      <p class="text-white/60">
+        Todo el código está en
+        <a href="https://github.com/ingyesid24/components-comentarios" target="_blank" rel="noopener noreferrer" class="relative inline-flex overflow-hidden rounded-lg p-[1px] text-[#3b82f6] hover:underline">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0B1422] px-2 py-0.5 text-sm backdrop-blur-3xl">github.com/ingyesid24/components-comentarios</span>
+        </a>
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8">Clonar e instalar</h2>
+      <CodeBlock code={`git clone https://github.com/ingyesid24/components-comentarios.git
+cd components-comentarios
+npm install`} lang="bash" />
+
+      <h2 class="text-xl font-semibold mt-8">Comandos útiles</h2>
+      <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
+        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,rgba(136,120,230,0.4)_50%,rgba(59,130,246,0.4)_100%)]" />
+        <div class="relative bg-[#0B1422] rounded-xl">
+          <CodeBlock code={`npm run build    # Compila la librería a dist/
+npm run test    # Ejecuta los tests
+npm run dev     # (librería) Ya no aplica, la librería se publica como bundle`} lang="bash" />
+        </div>
+      </div>
+
+      <h2 class="text-xl font-semibold mt-8">Estructura del proyecto</h2>
+      <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
+        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(136,120,230,0.4)_0%,rgba(59,130,246,0.4)_50%,rgba(136,120,230,0.4)_100%)]" />
+        <div class="relative bg-[#0B1422] rounded-xl">
+          <CodeBlock code={`src/
+  comment-section.ts    # Componente principal (LitElement)
+  comment-section.test.ts  # Tests
+
+docs/                   # Sitio de documentación (Astro)
+  src/
+    pages/              # Landing, guía, API, ejemplos, contribuir
+    components/         # Header, Footer, DemoEmbed, CodeBlock
+    layouts/            # BaseLayout
+
+dist/                   # Output de la build
+  comment-section.es.js
+  comment-section.umd.js`} lang="text" />
+        </div>
+      </div>
+
+      <h2 class="text-xl font-semibold mt-8">Guía para contribuir</h2>
+      <ol class="text-white/60 space-y-2">
+        <li>1. Haz fork del repositorio</li>
+        <li>2. Crea una rama: <code class="text-white">git checkout -b mi-feature</code></li>
+        <li>3. Haz tus cambios y corre los tests: <code class="text-white">npm test</code></li>
+        <li>4. Asegúrate de que la build pase: <code class="text-white">npm run build</code></li>
+        <li>5. Abre un Pull Request (PR) describiendo los cambios</li>
+        <li>6. Espera la revisión y aprobación del mantenedor — <strong class="text-white">nadie puede mergear sin aprobación</strong></li>
+      </ol>
+
+      <h2 class="text-xl font-semibold mt-8">Protección de rama main</h2>
+      <p class="text-white/60">
+        La rama <code class="text-white">main</code> está protegida. No se permite push directo ni merge sin PR aprobado. Todo cambio pasa por una Pull Request revisada por el mantenedor del proyecto.
+      </p>
+      <p class="text-white/60">
+        Esto garantiza que cualquier contribución sea revisada línea por línea antes de integrarse, protegiendo el código de modificaciones no autorizadas o maliciosas.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8">Reportar bugs</h2>
+      <p class="text-white/60">
+        Si encuentras un bug, <a href="https://github.com/ingyesid24/components-comentarios/issues/new" target="_blank" rel="noopener noreferrer" class="text-[#3b82f6] hover:underline">abre un issue aquí</a> con:
+      </p>
+      <ul class="text-white/60">
+        <li>• Versión del componente</li>
+        <li>• Navegador donde ocurre</li>
+        <li>• Pasos para reproducir</li>
+        <li>• Comportamiento esperado vs actual</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mt-8">Licencia</h2>
+      <p class="text-white/60">MIT — puedes usarlo, modificarlo y distribuirlo libremente.</p>
+    </article>
+  </div>
+</BaseLayout>

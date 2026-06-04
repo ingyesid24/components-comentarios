@@ -1,0 +1,173 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+import DemoEmbed from "../components/DemoEmbed.astro";
+---
+
+<BaseLayout title="Ejemplos — comment-section">
+  <div class="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_70%)]"></div>
+  </div>
+  <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 flex gap-12">
+    <Sidebar />
+    <article class="min-w-0 flex-1 max-w-3xl">
+      <h1 class="text-3xl font-bold mb-8 inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">Ejemplos</h1>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Uso básico
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">El componente sin ningún atributo usa valores por defecto.</p>
+        <CodeBlock code={`<comment-section></comment-section>`} lang="html" />
+        <div class="spotlight-card relative overflow-hidden rounded-2xl border border-[#111C2D] bg-[#0D1525] p-2" data-spotlight>
+          <div class="pointer-events-none absolute -inset-px opacity-0 transition duration-300" data-spotlight-effect></div>
+          <div class="relative z-10">
+            <DemoEmbed maxComments={3} placeholder="Escribe algo..." />
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Tema claro
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">Cambia el fondo a blanco con <code class="text-white">theme="light"</code>.</p>
+        <CodeBlock code={`<comment-section theme="light"></comment-section>`} lang="html" />
+        <div class="spotlight-card relative overflow-hidden rounded-2xl border border-[#111C2D] bg-[#0D1525] p-2" data-spotlight>
+          <div class="pointer-events-none absolute -inset-px opacity-0 transition duration-300" data-spotlight-effect></div>
+          <div class="relative z-10">
+            <DemoEmbed theme="light" maxComments={3} />
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Máximo personalizado
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">Controla cuántos comentarios se muestran antes de "Ver más".</p>
+        <CodeBlock code={`<comment-section max-comments="9" placeholder="Danos tu feedback..."></comment-section>`} lang="html" />
+      </section>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Límite de caracteres
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">Reduce el máximo de caracteres por comentario.</p>
+        <CodeBlock code={`<comment-section char-limit="100"></comment-section>`} lang="html" />
+      </section>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Con datos iniciales
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">Carga comentarios existentes desde JavaScript.</p>
+        <CodeBlock code={`<script>
+  const el = document.querySelector("comment-section");
+  el.initialComments = [
+    {
+      id: "1",
+      text: "Primer comentario de ejemplo",
+      date: "2025-03-10T08:00:00Z",
+      name: "María García",
+      avatar: "https://i.pravatar.cc/80?u=maria",
+      emoji: "⭐"
+    },
+    {
+      id: "2",
+      text: "Esto funciona genial en producción",
+      date: "2025-03-10T09:30:00Z",
+      name: "Carlos López",
+      avatar: "https://i.pravatar.cc/80?u=carlos",
+      emoji: "🎉"
+    }
+  ];
+</script>`} lang="html" />
+      </section>
+
+      <section class="mb-12">
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            Todas las props combinadas
+          </span>
+        </h2>
+        <CodeBlock code={`<comment-section
+  max-comments="12"
+  placeholder="Tu opinión nos importa..."
+  theme="light"
+  char-limit="300"
+></comment-section>`} lang="html" />
+      </section>
+
+      <section>
+        <h2 class="relative inline-flex overflow-hidden rounded-lg p-[1px] mb-2">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.4)_0%,transparent_50%,rgba(59,130,246,0.4)_100%)]" />
+          <span class="relative inline-flex items-center rounded-lg bg-[#0D1525] px-3 py-1 text-sm font-semibold text-white backdrop-blur-3xl">
+            CDN vía unpkg
+          </span>
+        </h2>
+        <p class="text-white/50 text-sm mb-4">Para usar sin npm, carga desde unpkg.com.</p>
+        <div class="relative rounded-2xl border border-[#111C2D] bg-[#0D1525] overflow-hidden">
+          <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
+            <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)]"></div>
+          </div>
+          <div class="p-4">
+            <CodeBlock code={`<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comentarios</title>
+</head>
+<body>
+  <h1>Mi sitio</h1>
+  <comment-section
+    max-comments="9"
+    placeholder="Deja tu comentario..."
+    theme="dark"
+  />
+  <script src="https://unpkg.com/comment-section@0.1.0"></script>
+</body>
+</html>`} lang="html" />
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll("[data-spotlight]").forEach((card) => {
+    const effect = card.querySelector("[data-spotlight-effect]");
+    if (!effect) return;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      effect.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,182,255,.1), transparent 40%)`;
+      effect.style.opacity = "1";
+    });
+
+    card.addEventListener("mouseleave", () => {
+      effect.style.opacity = "0";
+    });
+  });
+</script>

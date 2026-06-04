@@ -1,5 +1,5 @@
 {
-  "name": "components-comentarios",
+  "name": "comment-section",
   "version": "0.1.0",
   "description": "Web Component de sección de comentarios — dark theme, emoji reactions, responsive grid. Funciona en React, HTML, Next.js, Astro y cualquier framework.",
   "type": "module",

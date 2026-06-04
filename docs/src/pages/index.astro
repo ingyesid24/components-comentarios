@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DemoEmbed from "../components/DemoEmbed.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+---
+
+<BaseLayout title="comment-section — Componente de comentarios para cualquier web">
+  <section class="relative mx-auto max-w-5xl px-6 pt-20 pb-10 text-center overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight relative">
+      Comentarios para
+      <span class="text-[#3b82f6] inline-flex items-center">
+        <span id="typing-text"></span><span id="cursor" class="animate-blink">|</span>
+      </span>
+    </h1>
+    <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">
+      Un Web Component ligero, dark theme, emoji reactions y responsive grid.
+      Funciona en HTML, React, Astro, Next.js y cualquier framework.
+    </p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <a href="/guia-rapida" class="inline-flex h-12 animate-background-shine items-center justify-center rounded-xl border border-gray-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-bold text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50">Comenzar</a>
+      <a href="/ejemplos" class="rounded-xl border border-[#111C2D] px-6 py-3 font-bold text-white/80 hover:text-white hover:border-white/20 transition-colors">Ver ejemplos</a>
+    </div>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm">
+      <span class="badge-shine relative inline-flex items-center gap-1 overflow-hidden rounded-full border border-gray-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-3 py-1 text-white/70 animate-background-shine">⚡ Web Component</span>
+      <span class="badge-shine relative inline-flex items-center gap-1 overflow-hidden rounded-full border border-gray-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-3 py-1 text-white/70 animate-background-shine">📦 12 KB gzip</span>
+      <span class="badge-shine relative inline-flex items-center gap-1 overflow-hidden rounded-full border border-gray-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-3 py-1 text-white/70 animate-background-shine">🌙 Dark / Light</span>
+      <span class="badge-shine relative inline-flex items-center gap-1 overflow-hidden rounded-full border border-gray-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-3 py-1 text-white/70 animate-background-shine">📱 Responsive</span>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 pb-16">
+    <h2 class="text-2xl font-bold mb-4 text-center">Demo interactivo</h2>
+    <p class="text-center text-white/50 mb-2 text-sm">Escribe un comentario y pruébalo tú mismo</p>
+    <DemoEmbed />
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-20">
+    <h2 class="text-2xl font-bold mb-2 text-center">Instalación en 1 línea</h2>
+    <p class="text-center text-white/50 mb-6 text-sm">Funciona en cualquier proyecto, sin importar el framework</p>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="relative rounded-2xl border border-[#111C2D] bg-[#0D1525] p-6 overflow-hidden">
+        <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
+          <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)] transition-all duration-1000"></div>
+        </div>
+        <h3 class="font-semibold mb-3">npm</h3>
+        <CodeBlock code="npm install comment-section" lang="bash" />
+        <CodeBlock code={`import "comment-section";\n\n<comment-section></comment-section>`} lang="html" />
+      </div>
+      <div class="relative rounded-2xl border border-[#111C2D] bg-[#0D1525] p-6 overflow-hidden">
+        <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
+          <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)] transition-all duration-1000"></div>
+        </div>
+        <h3 class="font-semibold mb-3">CDN</h3>
+        <CodeBlock code={`<script src="https://unpkg.com/comment-section"></script>\n<comment-section></comment-section>`} lang="html" />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-20">
+    <h2 class="text-2xl font-bold mb-8 text-center">Características</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { icon: "🧩", title: "Framework-agnostic", desc: "Web Component nativo. Úsalo en React, Vue, Angular, Astro o HTML plano." },
+        { icon: "🌙", title: "Dark & Light theme", desc: "Soporta ambos temas con el atributo theme='dark' | 'light'." },
+        { icon: "😊", title: "Reacciones con emojis", desc: "Selector de emojis integrado para reaccionar a cada comentario." },
+        { icon: "📱", title: "Responsive grid", desc: "Grid adaptativo: 1, 2 o 3 columnas según el viewport." },
+        { icon: "⚡", title: "Ligero y rápido", desc: "~12 KB gzip. Sin dependencias pesadas ni runtime overhead." },
+        { icon: "💾", title: "Persistencia flexible", desc: "API opcional para conectar a tu backend o localStorage." },
+        { icon: "♿", title: "Accesible", desc: "ARIA labels, roles, live regions. Pensado para todos." },
+        { icon: "📦", title: "TypeScript + Tests", desc: "Tipado completo y test suite con @web/test-runner." },
+      ].map((feat) => (
+        <div class="spotlight-card relative overflow-hidden rounded-2xl border border-[#111C2D] bg-[#0D1525] p-5" data-spotlight>
+          <div class="pointer-events-none absolute -inset-px opacity-0 transition duration-300" data-spotlight-effect></div>
+          <div class="relative z-10">
+            <div class="text-3xl mb-3">{feat.icon}</div>
+            <h3 class="font-semibold mb-1">{feat.title}</h3>
+            <p class="text-sm text-white/50">{feat.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  #cursor { animation: blink 0.7s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+
+<script>
+  const el = document.getElementById("typing-text");
+  const words = ["cualquier web", "React", "HTML plano", "Astro", "Next.js", "Vue"];
+  let wordIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+
+  function type() {
+    const current = words[wordIdx];
+    if (!isDeleting) {
+      el.textContent = current.slice(0, charIdx++);
+      if (charIdx > current.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+    } else {
+      el.textContent = current.slice(0, charIdx--);
+      if (charIdx < 0) {
+        isDeleting = false;
+        charIdx = 0;
+        wordIdx = (wordIdx + 1) % words.length;
+      }
+    }
+    setTimeout(type, isDeleting ? 40 : 80);
+  }
+
+  type();
+
+  document.querySelectorAll("[data-spotlight]").forEach((card) => {
+    const effect = card.querySelector("[data-spotlight-effect]");
+    if (!effect) return;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      effect.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,182,255,.1), transparent 40%)`;
+      effect.style.opacity = "1";
+    });
+
+    card.addEventListener("mouseleave", () => {
+      effect.style.opacity = "0";
+    });
+  });
+</script>

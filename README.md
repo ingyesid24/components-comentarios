@@ -1,62 +1,100 @@
-# Comentarios Interactivos
+# comment-section
 
-Este es un componente de comentarios interactivos desarrollado con **React, Framer Motion, Tailwind CSS y Faker.js**. Permite a los usuarios agregar comentarios, reaccionar con emojis y ver un historial de comentarios en una interfaz moderna y atractiva.
+Web Component de comentarios listo para usar en **HTML, React, Astro, Next.js, Vue y cualquier framework**.
 
-## Características
+- 🌙 Tema dark/light
+- 😊 Reacciones con emojis
+- 📱 Responsive grid (1–3 columnas)
+- ♿ Accesible (ARIA labels, live regions)
+- ⚡ ~12 KB gzip, sin dependencias pesadas
+- 📦 TypeScript + Tests
 
-- 📜 **Publicación de Comentarios**: Permite escribir y publicar comentarios con un avatar generado aleatoriamente.
-- 🎭 **Emojis Personalizados**: Cada comentario puede recibir una reacción con un emoji personalizado.
-- 👍 **Interacción con Likes**: Los usuarios pueden reaccionar con diferentes emojis.
-- ⏳ **Carga con Animación**: Simula una carga inicial con un efecto visual atractivo.
-- 🔄 **Ver Más / Ver Menos**: Control de visualización de comentarios para mejorar la experiencia de usuario.
+## Vista previa
 
-## Tecnologías Utilizadas
-
-- **React**: Para la estructura del componente.
-- **Framer Motion**: Para animaciones fluidas.
-- **Tailwind CSS**: Para un diseño moderno y adaptable.
-- **Faker.js**: Para la generación de nombres y avatares aleatorios.
-- **Emoji Picker React**: Para la selección de emojis.
+![comment-section dark theme](docs/public/preview-dark.svg)
 
 ## Instalación
 
-1. Clona el repositorio:
-   ```sh
-   https://github.com/YsdCastro24/Components_comment.git
-   ```
-2. Ingresa al directorio del proyecto:
-   ```sh
-   git@github.com:YsdCastro24/Components_comment.git
-   ```
-3. Instala las dependencias:
-   ```sh
-   npm install
-   ```
-4. Inicia el servidor de desarrollo:
-   ```sh
-   npm run dev
-   ```
+```sh
+npm install comment-section
+```
 
-## Uso
+## Uso rápido
 
-1. Escribe un comentario en el cuadro de texto.
-2. Usa el botón de emojis para agregar reacciones.
-3. Publica tu comentario y observa cómo aparece en la lista.
-4. Interactúa con los comentarios usando los botones de reacción.
+**HTML plano:**
 
-## Capturas de Pantalla
+```html
+<script type="module">
+  import "comment-section";
+</script>
+<comment-section></comment-section>
+```
 
-![Vista previa](./public/components.png)
+**React / Astro / Next.js:**
 
+```jsx
+import "comment-section";
 
+function App() {
+  return <comment-section max-comments="6" placeholder="Deja tu comentario..." theme="dark" />;
+}
+```
 
-## Contribuciones
+**CDN (sin npm):**
 
-Las contribuciones son bienvenidas. Si encuentras algún problema o tienes una idea de mejora, por favor abre un issue o envía un pull request.
+```html
+<script src="https://unpkg.com/comment-section"></script>
+<comment-section theme="light"></comment-section>
+```
+
+## Atributos
+
+| Atributo       | Tipo             | Default                         | Descripción                                   |
+|----------------|------------------|----------------------------------|-----------------------------------------------|
+| `max-comments` | `number`         | `6`                              | Comentarios visibles antes de "Ver más"       |
+| `placeholder`  | `string`         | `"Escribe un comentario..."`     | Placeholder del textarea                      |
+| `theme`        | `"dark"\|"light"`| `"dark"`                         | Tema del componente                           |
+| `char-limit`   | `number`         | `500`                            | Máximo de caracteres por comentario           |
+
+> También acepta la propiedad JS `initialComments: Comment[]` para cargar comentarios existentes.
+
+## Documentación
+
+Visita la [documentación completa](https://ingyesid24.github.io/components-comentarios/) con ejemplos interactivos, guía rápida y referencia de API.
+
+## Desarrollo
+
+```sh
+git clone https://github.com/ingyesid24/components-comentarios.git
+cd components-comentarios
+npm install
+npm run build    # Compila la librería
+npm test         # Ejecuta los tests
+```
+
+## Docs site
+
+```sh
+cd docs
+npm install
+npm run dev      # http://localhost:4321
+```
+
+## Contribuir
+
+La rama `main` está protegida. No se permite push directo ni merge sin PR aprobado.
+
+1. Haz fork del repo
+2. Crea una rama: `git checkout -b mi-feature`
+3. Haz tus cambios y corre los tests: `npm test`
+4. Asegúrate de que la build pase: `npm run build`
+5. Abre un Pull Request describiendo los cambios
+6. Espera la revisión y aprobación
+
+### Reportar bugs
+
+Si encuentras un bug, [abre un issue aquí](https://github.com/ingyesid24/components-comentarios/issues/new).
 
 ## Licencia
 
-Este proyecto está bajo la **Licencia MIT**. Puedes usarlo y modificarlo libremente.
-
----
-✉️ **Contacto**: Si tienes preguntas o sugerencias, no dudes en contactarme en [ingenieroyesidcastro08@gmail.com](ingenieroyesidcastro08@gmail.com).
+MIT
