@@ -97,4 +97,4 @@ Si encuentras un bug, [abre un issue aquí](https://github.com/ingyesid24/compon
 
 ## Licencia
 
-MIT
+MIT — [LICENSE](LICENSE) — Copyright (c) 2026 ingyesid24. Puedes usarlo, modificarlo y distribuirlo libremente.
