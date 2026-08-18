@@ -42,8 +42,8 @@ jobs:
           pnpm add -D happy-dom
           cp /home/runner/work/components-comentarios/components-comentarios/scripts/smoke.mjs .
           node smoke.mjs
-          node -e "require.resolve('comment-section')"
-          node --input-type=module -e "import.meta.resolve('comment-section')"
+          node -e "require.resolve('universal-comments')"
+          node --input-type=module -e "import.meta.resolve('universal-comments')"
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
       - name: Install tarball with Bun and smoke test
