@@ -72,13 +72,13 @@ function App() {
 
 ## Documentación
 
-Visita la [documentación completa](https://ingyesid24.github.io/components-comentarios/) con ejemplos interactivos, guía rápida y referencia de API.
+Visita la [documentación completa](https://universal-comments.vercel.app/) con ejemplos interactivos, guía rápida y referencia de API.
 
 ## Desarrollo
 
 ```sh
-git clone https://github.com/ingyesid24/components-comentarios.git
-cd components-comentarios
+git clone https://github.com/ingyesid24/universal-comments.git
+cd universal-comments
 npm install
 npm run build    # Compila la librería
 npm test         # Ejecuta los tests
@@ -105,7 +105,7 @@ La rama `main` está protegida. No se permite push directo ni merge sin PR aprob
 
 ### Reportar bugs
 
-Si encuentras un bug, [abre un issue aquí](https://github.com/ingyesid24/components-comentarios/issues/new).
+Si encuentras un bug, [abre un issue aquí](https://github.com/ingyesid24/universal-comments/issues/new).
 
 ## Licencia
 
