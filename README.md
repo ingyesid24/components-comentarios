@@ -1,4 +1,4 @@
-# comment-section
+# universal-comments
 
 Web Component de comentarios listo para usar en **HTML, React, Astro, Next.js, Vue y cualquier framework**.
 
@@ -11,20 +11,20 @@ Web Component de comentarios listo para usar en **HTML, React, Astro, Next.js, V
 
 ## Vista previa
 
-![comment-section dark theme](docs/public/preview-dark.svg)
+![universal-comments dark theme](docs/public/preview-dark.svg)
 
 ## Instalación
 
 ```sh
-npm install comment-section
+npm install universal-comments
 ```
 
 Con otros gestores de paquetes:
 
 ```sh
-pnpm add comment-section
-bun add comment-section
-yarn add comment-section
+pnpm add universal-comments
+bun add universal-comments
+yarn add universal-comments
 ```
 
 ## Uso rápido
@@ -33,18 +33,18 @@ yarn add comment-section
 
 ```html
 <script type="module">
-  import "comment-section";
+  import "universal-comments";
 </script>
-<comment-section></comment-section>
+<universal-comments></universal-comments>
 ```
 
 **React / Astro / Next.js:**
 
 ```jsx
-import "comment-section";
+import "universal-comments";
 
 function App() {
-  return <comment-section max-comments="6" placeholder="Deja tu comentario..." theme="dark" />;
+  return <universal-comments max-comments="6" placeholder="Deja tu comentario..." theme="dark" />;
 }
 ```
 
@@ -54,9 +54,9 @@ function App() {
 
 ```html
 <script type="module">
-  import "https://unpkg.com/comment-section/dist/comment-section.es.js";
+  import "https://unpkg.com/universal-comments/dist/universal-comments.es.js";
 </script>
-<comment-section theme="light"></comment-section>
+<universal-comments theme="light"></universal-comments>
 ```
 
 ## Atributos

@@ -1,16 +1,16 @@
 {
-  "name": "comment-section",
+  "name": "universal-comments",
   "version": "0.1.0",
   "description": "Web Component de sección de comentarios — dark theme, emoji reactions, responsive grid. Funciona en React, HTML, Next.js, Astro y cualquier framework.",
   "type": "module",
-  "main": "dist/comment-section.umd.cjs",
-  "module": "dist/comment-section.es.js",
-  "types": "dist-types/comment-section.d.ts",
+  "main": "dist/universal-comments.umd.cjs",
+  "module": "dist/universal-comments.es.js",
+  "types": "dist-types/universal-comments.d.ts",
   "exports": {
     ".": {
-      "types": "./dist-types/comment-section.d.ts",
-      "import": "./dist/comment-section.es.js",
-      "require": "./dist/comment-section.umd.cjs"
+      "types": "./dist-types/universal-comments.d.ts",
+      "import": "./dist/universal-comments.es.js",
+      "require": "./dist/universal-comments.umd.cjs"
     }
   },
   "files": [

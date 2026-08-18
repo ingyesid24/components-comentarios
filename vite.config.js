@@ -4,10 +4,10 @@ import { resolve } from 'path';
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/comment-section.ts'),
-      name: 'CommentSection',
+      entry: resolve(__dirname, 'src/universal-comments.ts'),
+      name: 'UniversalComments',
       formats: ['es', 'umd'],
-      fileName: (format) => `comment-section.${format === 'umd' ? 'umd.cjs' : 'es.js'}`,
+      fileName: (format) => `universal-comments.${format === 'umd' ? 'umd.cjs' : 'es.js'}`,
     },
   },
   publicDir: false,

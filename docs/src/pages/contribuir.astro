@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar.astro";
 import CodeBlock from "../components/CodeBlock.astro";
 ---
 
-<BaseLayout title="Contribuir — comment-section">
+<BaseLayout title="Contribuir — universal-comments">
   <div class="fixed inset-0 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_70%)]"></div>
   </div>
@@ -43,8 +43,8 @@ npm run dev     # (librería) Ya no aplica, la librería se publica como bundle`
         <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(136,120,230,0.4)_0%,rgba(59,130,246,0.4)_50%,rgba(136,120,230,0.4)_100%)]" />
         <div class="relative bg-[#0B1422] rounded-xl">
           <CodeBlock code={`src/
-  comment-section.ts    # Componente principal (LitElement)
-  comment-section.test.ts  # Tests
+  universal-comments.ts    # Componente principal (LitElement)
+  universal-comments.test.ts  # Tests
 
 docs/                   # Sitio de documentación (Astro)
   src/
@@ -53,8 +53,8 @@ docs/                   # Sitio de documentación (Astro)
     layouts/            # BaseLayout
 
 dist/                   # Output de la build
-  comment-section.es.js
-  comment-section.umd.js`} lang="text" />
+  universal-comments.es.js
+  universal-comments.umd.js`} lang="text" />
         </div>
       </div>
 

@@ -12,7 +12,7 @@ const props = [
 ];
 ---
 
-<BaseLayout title="API / Props — comment-section">
+<BaseLayout title="API / Props — universal-comments">
   <div class="fixed inset-0 pointer-events-none overflow-hidden">
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#3b82f6] opacity-[0.08] rounded-full blur-3xl animate-glow-pulse"></div>
     <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#8878e6] opacity-[0.06] rounded-full blur-3xl animate-glow-pulse" style="animation-delay: -3s; animation-direction: reverse;"></div>
@@ -55,7 +55,7 @@ const props = [
       <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
         <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(59,130,246,0.3)_0%,transparent_50%,rgba(59,130,246,0.3)_100%)]" />
         <div class="relative bg-[#0B1422] rounded-xl">
-          <CodeBlock code={`const el = document.querySelector("comment-section");
+          <CodeBlock code={`const el = document.querySelector("universal-comments");
 
 el.maxcomments = 9;
 el.placeholder = "Tu opinión nos importa...";

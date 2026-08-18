@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm pack
-- name: Set up pnpm
+      - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9

@@ -14,18 +14,18 @@ const { maxComments = 4, placeholder = "Prueba el componente...", theme = "dark"
   <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
     <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)]"></div>
   </div>
-  <comment-section
+  <universal-comments
     max-comments={maxComments}
     placeholder={placeholder}
     theme={theme}
     char-limit="300"
-  ></comment-section>
+  ></universal-comments>
 </div>
 
 <script>
-  import "comment-section";
+  import "universal-comments";
 
-  document.querySelectorAll("comment-section").forEach((el) => {
+  document.querySelectorAll("universal-comments").forEach((el) => {
     el.initialComments = [
       { id: "demo-1", text: "¡Este componente funciona en cualquier framework!", name: "Ana García", date: new Date().toISOString(), emoji: "🎉", avatar: "https://i.pravatar.cc/80?u=demo1" },
       { id: "demo-2", text: "Me encanta que se pueda usar directo en HTML sin React.", name: "Carlos López", date: new Date(Date.now() - 600000).toISOString(), emoji: "❤️", avatar: "https://i.pravatar.cc/80?u=demo2" },

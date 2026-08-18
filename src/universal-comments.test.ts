@@ -1,11 +1,11 @@
 import { html, render } from 'lit';
 import { expect } from '@esm-bundle/chai';
-import './comment-section.js';
+import './universal-comments.js';
 
 async function createFixture() {
   const container = document.createElement('div');
   document.body.appendChild(container);
-  render(html`<comment-section></comment-section>`, container);
+  render(html`<universal-comments></universal-comments>`, container);
   const el = container.firstElementChild as HTMLElement;
   await (el as any).updateComplete;
   return { el, container };
@@ -16,7 +16,7 @@ async function waitForLoad(el: HTMLElement) {
   await (el as any).updateComplete;
 }
 
-describe('comment-section', () => {
+describe('universal-comments', () => {
   afterEach(() => {
     document.body.querySelectorAll('div').forEach((d) => d.remove());
   });

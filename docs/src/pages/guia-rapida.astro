@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar.astro";
 import CodeBlock from "../components/CodeBlock.astro";
 ---
 
-<BaseLayout title="Guía rápida — comment-section">
+<BaseLayout title="Guía rápida — universal-comments">
   <div class="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
   <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 flex gap-12">
     <Sidebar />
@@ -12,27 +12,27 @@ import CodeBlock from "../components/CodeBlock.astro";
       <h1 class="text-3xl font-bold inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">Guía rápida</h1>
 
       <h2 class="text-xl font-semibold mt-8">Instalación</h2>
-      <CodeBlock code={`npm install comment-section
-pnpm add comment-section
-bun add comment-section`} lang="bash" />
+      <CodeBlock code={`npm install universal-comments
+pnpm add universal-comments
+bun add universal-comments`} lang="bash" />
 
       <h2 class="text-xl font-semibold mt-8">Uso en HTML plano</h2>
       <p class="text-white/60">Importa el script y usa la etiqueta directamente:</p>
       <CodeBlock code={`<script type="module">
-  import "comment-section";
+  import "universal-comments";
 </script>
 
-<comment-section></comment-section>`} lang="html" />
+<universal-comments></universal-comments>`} lang="html" />
 
       <h2 class="text-xl font-semibold mt-8">Uso en React / Next.js</h2>
       <p class="text-white/60">Los Web Components se usan como etiquetas HTML normales en JSX:</p>
-      <CodeBlock code={`import "comment-section";
+      <CodeBlock code={`import "universal-comments";
 
 function App() {
   return (
     <div>
       <h1>Mi sitio</h1>
-      <comment-section
+      <universal-comments
         max-comments="6"
         placeholder="Deja tu comentario..."
         theme="dark"
@@ -49,18 +49,18 @@ function App() {
 ---
 <html>
   <body>
-    <comment-section max-comments="9" />
+    <universal-comments max-comments="9" />
   </body>
 </html>
 
 <script>
-  import "comment-section";
+  import "universal-comments";
 </script>`} lang="astro" />
 
       <h2 class="text-xl font-semibold mt-8">CDN (sin npm)</h2>
       <p class="text-white/60">Si no usas npm, carga desde CDN:</p>
-      <CodeBlock code={`<script src="https://unpkg.com/comment-section"></script>
-<comment-section theme="light"></comment-section>`} lang="html" />
+      <CodeBlock code={`<script src="https://unpkg.com/universal-comments"></script>
+<universal-comments theme="light"></universal-comments>`} lang="html" />
 
       <h2 class="text-xl font-semibold mt-8">Build desde el repo</h2>
       <div class="relative overflow-hidden rounded-xl border border-[#111C2D] p-[1px] backdrop-blur-3xl">
@@ -72,7 +72,7 @@ npm install
 npm run build`} lang="bash" />
         </div>
       </div>
-      <p class="text-white/60 mt-2">Los archivos compilados quedan en <code class="text-white">dist/</code>. Copia <code>comment-section.es.js</code> o <code>comment-section.umd.js</code> a tu proyecto.</p>
+      <p class="text-white/60 mt-2">Los archivos compilados quedan en <code class="text-white">dist/</code>. Copia <code>universal-comments.es.js</code> o <code>universal-comments.umd.js</code> a tu proyecto.</p>
     </article>
   </div>
 </BaseLayout>

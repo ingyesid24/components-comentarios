@@ -35,12 +35,12 @@ function uniqueId(): string {
 }
 
 /**
- * `<comment-section>` Web Component
+ * `<universal-comments>` Web Component
  *
  * Self-contained comment section with emoji reactions,
  * loading skeleton, responsive grid, and no framework dependencies.
  *
- * @element comment-section
+ * @element universal-comments
  * @attr {number} max-comments - Visible comments before "Ver más" (default: 6)
  * @attr {string} placeholder - Textarea placeholder (default: "Escribe un comentario...")
  * @attr {string} theme - "dark" | "light" (default: "dark")
@@ -51,7 +51,7 @@ function uniqueId(): string {
  * @fires comment-added - Dispatched when a comment is added (detail: { comment })
  * @fires comment-deleted - Dispatched when a comment is deleted (detail: { commentId })
  */
-export class CommentSection extends LitElement {
+export class UniversalComments extends LitElement {
   static properties = {
     maxcomments: { type: Number, attribute: 'max-comments' },
     placeholder: { type: String },
@@ -964,11 +964,11 @@ export class CommentSection extends LitElement {
 }
 
 if (typeof customElements !== 'undefined') {
-  customElements.define('comment-section', CommentSection);
+  customElements.define('universal-comments', UniversalComments);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'comment-section': CommentSection;
+    'universal-comments': UniversalComments;
   }
 }

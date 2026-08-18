@@ -1,5 +1,5 @@
 {
-  "name": "comment-section-docs",
+  "name": "universal-comments-docs",
   "type": "module",
   "private": true,
   "scripts": {
@@ -11,6 +11,6 @@
     "@astrojs/tailwind": "^5.1.5",
     "astro": "^5.18.2",
     "tailwindcss": "^3.4.19",
-    "comment-section": "file:.."
+    "universal-comments": "file:.."
   }
 }

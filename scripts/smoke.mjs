@@ -8,10 +8,10 @@ globalThis.customElements = w.customElements;
 globalThis.CustomEvent = w.CustomEvent;
 globalThis.CSSStyleSheet = w.CSSStyleSheet;
 
-const m = await import('comment-section');
-if (typeof m.CommentSection !== 'function') throw new Error('CommentSection export missing');
+const m = await import('universal-comments');
+if (typeof m.UniversalComments !== 'function') throw new Error('UniversalComments export missing');
 
-const el = w.document.createElement('comment-section');
+const el = w.document.createElement('universal-comments');
 w.document.body.appendChild(el);
 await new Promise((r) => setTimeout(r, 2200));
 await el.updateComplete;
