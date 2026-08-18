@@ -19,3 +19,38 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm run build
+
+  package-managers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: npm pack
+- name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install tarball with pnpm and smoke test
+        run: |
+          mkdir -p /tmp/smoke-pnpm && cd /tmp/smoke-pnpm
+          pnpm init > /dev/null
+          pnpm add /home/runner/work/components-comentarios/components-comentarios/comment-section-*.tgz
+          pnpm add -D happy-dom
+          cp /home/runner/work/components-comentarios/components-comentarios/scripts/smoke.mjs .
+          node smoke.mjs
+          node -e "require.resolve('comment-section')"
+          node --input-type=module -e "import.meta.resolve('comment-section')"
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install tarball with Bun and smoke test
+        run: |
+          mkdir -p /tmp/smoke-bun && cd /tmp/smoke-bun
+          bun init -y > /dev/null 2>&1
+          bun add /home/runner/work/components-comentarios/components-comentarios/comment-section-*.tgz
+          bun add -d happy-dom
+          cp /home/runner/work/components-comentarios/components-comentarios/scripts/smoke.mjs .
+          bun smoke.mjs

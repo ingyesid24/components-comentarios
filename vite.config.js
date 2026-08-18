@@ -7,7 +7,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/comment-section.ts'),
       name: 'CommentSection',
       formats: ['es', 'umd'],
-      fileName: (format) => `comment-section.${format}.js`,
+      fileName: (format) => `comment-section.${format === 'umd' ? 'umd.cjs' : 'es.js'}`,
     },
   },
   publicDir: false,

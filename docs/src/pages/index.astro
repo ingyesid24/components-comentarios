@@ -44,8 +44,10 @@ import CodeBlock from "../components/CodeBlock.astro";
         <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-center">
           <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)] transition-all duration-1000"></div>
         </div>
-        <h3 class="font-semibold mb-3">npm</h3>
-        <CodeBlock code="npm install comment-section" lang="bash" />
+        <h3 class="font-semibold mb-3">npm / pnpm / bun</h3>
+        <CodeBlock code={`npm install comment-section
+pnpm add comment-section
+bun add comment-section`} lang="bash" />
         <CodeBlock code={`import "comment-section";\n\n<comment-section></comment-section>`} lang="html" />
       </div>
       <div class="relative rounded-2xl border border-[#111C2D] bg-[#0D1525] p-6 overflow-hidden">
@@ -53,7 +55,10 @@ import CodeBlock from "../components/CodeBlock.astro";
           <div class="h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-[#3b82f6] to-[rgba(17,17,17,0)] transition-all duration-1000"></div>
         </div>
         <h3 class="font-semibold mb-3">CDN</h3>
-        <CodeBlock code={`<script src="https://unpkg.com/comment-section"></script>\n<comment-section></comment-section>`} lang="html" />
+        <CodeBlock code={`<script type="module">
+  import "https://unpkg.com/comment-section/dist/comment-section.es.js";
+</script>
+<comment-section></comment-section>`} lang="html" />
       </div>
     </div>
   </section>

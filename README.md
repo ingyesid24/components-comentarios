@@ -19,6 +19,14 @@ Web Component de comentarios listo para usar en **HTML, React, Astro, Next.js, V
 npm install comment-section
 ```
 
+Con otros gestores de paquetes:
+
+```sh
+pnpm add comment-section
+bun add comment-section
+yarn add comment-section
+```
+
 ## Uso rápido
 
 **HTML plano:**
@@ -40,10 +48,14 @@ function App() {
 }
 ```
 
+> ⚠️ **SSR / Next.js**: importa el componente solo en el cliente (p. ej. dentro de `useEffect` o con `next/dynamic` con `ssr: false`), ya que los Web Components requieren un navegador.
+
 **CDN (sin npm):**
 
 ```html
-<script src="https://unpkg.com/comment-section"></script>
+<script type="module">
+  import "https://unpkg.com/comment-section/dist/comment-section.es.js";
+</script>
 <comment-section theme="light"></comment-section>
 ```
 

@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { format } from 'timeago.js';
 
-interface Comment {
+export interface Comment {
   id: string;
   text: string;
   date: string;
@@ -47,6 +47,9 @@ function uniqueId(): string {
  * @attr {number} char-limit - Max characters per comment (default: 500)
  *
  * @property {Array} initialComments - Seed comments programmatically
+ *
+ * @fires comment-added - Dispatched when a comment is added (detail: { comment })
+ * @fires comment-deleted - Dispatched when a comment is deleted (detail: { commentId })
  */
 export class CommentSection extends LitElement {
   static properties = {
@@ -638,6 +641,7 @@ export class CommentSection extends LitElement {
         c.avatar ||
         `https://i.pravatar.cc/80?u=${c.id || uniqueId()}`,
       emoji: c.emoji || '👍',
+      liked: c.liked,
     }));
     this._loading = false;
     this.requestUpdate();
@@ -645,6 +649,12 @@ export class CommentSection extends LitElement {
 
   get initialComments(): Comment[] {
     return this._comments;
+  }
+
+  _emit(name: string, detail: Record<string, unknown>) {
+    this.dispatchEvent(
+      new CustomEvent(name, { detail, bubbles: true, composed: true }),
+    );
   }
 
   _onInput(e: Event) {
@@ -695,6 +705,7 @@ export class CommentSection extends LitElement {
     this._newComment = '';
     this._error = '';
     this._emojiPickerOpen = false;
+    this._emit('comment-added', { comment });
     this.requestUpdate();
   }
 
@@ -743,6 +754,7 @@ export class CommentSection extends LitElement {
       if (this._emojiPickerForComment === commentId) {
         this._emojiPickerForComment = null;
       }
+      this._emit('comment-deleted', { commentId });
       this.requestUpdate();
     }, 300);
   }
@@ -850,6 +862,10 @@ export class CommentSection extends LitElement {
                                   </button>
                                 `,
                               )}
+                            </div>
+                          </div>
+                        `
+                      : ''}
                   </div>
                   <button
                     class="delete-btn"
@@ -858,10 +874,6 @@ export class CommentSection extends LitElement {
                   >
                     🗑
                   </button>
-                </div>
-                        `
-                      : ''}
-                  </div>
                 </div>
               </div>
             `,
@@ -951,4 +963,12 @@ export class CommentSection extends LitElement {
   }
 }
 
-customElements.define('comment-section', CommentSection);
+if (typeof customElements !== 'undefined') {
+  customElements.define('comment-section', CommentSection);
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'comment-section': CommentSection;
+  }
+}

@@ -11,8 +11,10 @@ import CodeBlock from "../components/CodeBlock.astro";
     <article class="min-w-0 flex-1 max-w-3xl prose prose-invert">
       <h1 class="text-3xl font-bold inline-block bg-gradient-to-r from-white via-[#3b82f6] to-white bg-[length:200%_auto] bg-clip-text text-transparent animate-background-shine">Guía rápida</h1>
 
-      <h2 class="text-xl font-semibold mt-8">npm</h2>
-      <CodeBlock code="npm install comment-section" lang="bash" />
+      <h2 class="text-xl font-semibold mt-8">Instalación</h2>
+      <CodeBlock code={`npm install comment-section
+pnpm add comment-section
+bun add comment-section`} lang="bash" />
 
       <h2 class="text-xl font-semibold mt-8">Uso en HTML plano</h2>
       <p class="text-white/60">Importa el script y usa la etiqueta directamente:</p>
@@ -38,6 +40,7 @@ function App() {
     </div>
   );
 }`} lang="jsx" />
+      <p class="text-white/60 mt-2">⚠️ En Next.js con SSR, importa el componente solo en el cliente: <code class="text-white/80">useEffect</code> o <code class="text-white/80">next/dynamic</code> con <code class="text-white/80">ssr: false</code>.</p>
 
       <h2 class="text-xl font-semibold mt-8">Uso en Astro</h2>
       <p class="text-white/60">Importa en el script del componente o página:</p>
